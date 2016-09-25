@@ -1,0 +1,25 @@
+{
+  "name": "music-graphical-notation",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "budo main.js:release.js -v --live | garnish",
+    "build": "browserify main.js | uglifyjs -cm > release.js"
+  },
+  "author": "Antonio Noca - @antonionoca",
+  "license": "ISC",
+  "devDependencies": {
+    "budo": "^4.0.0",
+    "dat-gui": "^0.5.0",
+    "garnish": "^2.1.3",
+    "gsap": "^1.17.0",
+    "perlin-noise": "0.0.1",
+    "three": "^0.71.0",
+    "three-orbit-controls": "^69.0.4",
+    "watchify": "^3.2.1",
+    "web-audio-analyser": "^2.0.0"
+  }
+}
+
