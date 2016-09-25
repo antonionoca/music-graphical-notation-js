@@ -1,3 +1,5 @@
+'use strict';
+
 var THREE    = require('three');
 var TweenMax = require('gsap');
 var perlin   = require('perlin-noise');
@@ -19,20 +21,20 @@ var Line = function(y, amp, index, size, startCounter, fftData)
     this.mesh.position.z   = (16 - index) * -20 || 0;
     
     this.counter           = 0;
-}
+};
 
 Line.prototype.update = function( fftData ) 
 {
     // return
     if(!this.geometry.vertices) return;
 
-    this.points = this.generatedPoints( fftData )
+    this.points = this.generatedPoints( fftData );
 
     for (var i = this.geometry.vertices.length - 1; i >= 0; i--) {
-        this.geometry.vertices[i].y += (this.points[i].y - this.geometry.vertices[i].y) * 0.04
-    };
+        this.geometry.vertices[i].y += (this.points[i].y - this.geometry.vertices[i].y) * 0.04;
+    }
 
-    this.mesh.geometry.verticesNeedUpdate = true
+    this.mesh.geometry.verticesNeedUpdate = true;
 };
 
 Line.prototype.generatedPoints = function(array) {
@@ -44,42 +46,44 @@ Line.prototype.generatedPoints = function(array) {
     var straightLines = perlin.generatePerlinNoise(1, 128);
     for (i = straightLines.length - 1; i >= 0; i--) {
         straightLines[i] *= 10;
-    };
+    }
 
     var noise = [];
-    var order = this.index < 11 ? 10 - this.index : this.index
+    var order = this.index < 11 ? 10 - this.index : this.index;
 
-    var range = 512 / 8
-    var start = range * (order % 11)
+    var range = 512 / 8;
+    var start = range * (order % 11);
 
     for (i = range + start; i >= start; i--) {
         var a = array[i] / 5;
         a = a > 20 ? a * 1.5 : a / 50;
         a = Math.max(5, a);
         noise.push(a);
-    };
+    }
 
     noise = straightLines.concat(noise);
     var invertedPerlin = noise.slice(0);
-    invertedPerlin = invertedPerlin.reverse()
+    invertedPerlin = invertedPerlin.reverse();
     noise = noise.concat(invertedPerlin);
 
-    var spline = []
+    var spline = [];
+
+    //TODO why reset i?
     i = 0;
 
-    var ratio = this.size.x / noise.length
+    var ratio = this.size.x / noise.length;
 
-    while(i<noise.length){
-        spline.push(new THREE.Vector3( -this.size.x/2 + (ratio * i), noise[i], 0 ) )
+    //TODO move this block to a more meaningful function
+    while(i < noise.length) {
+        //TODO ugly push
+        spline.push(new THREE.Vector3( -this.size.x/2 + (ratio * i), noise[i], 0 ) );
+
         i++;
-    };
+    }
 
     var curve = new THREE.SplineCurve3(spline);
     return curve.getPoints(511);
-
-    return spline
 };
-
 
 module.exports = Line;
 

@@ -8,7 +8,6 @@ web audio API and unit testing in JavaScript.
 
 #TODO
 
-- jshint
 - tests
 - refactor code (classes)
 - pure functions
