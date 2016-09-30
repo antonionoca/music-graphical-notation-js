@@ -4,15 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "browserify main.js | uglifyjs -cm > release.js",
+    "build": "browserify main.js > release.js",
     "lint": "node_modules/jshint/bin/jshint **.js",
     "preinstall": "cp dev_scripts/pre-commit .git/hooks/pre-commit;chmod +x .git/hooks/pre-commit",
     "start": "budo main.js:release.js -v --live | garnish",
-    "test": "$PWD/node_modules/karma/bin/karma start karma.conf.js"
+    "test": "browserify main.js | $PWD/node_modules/karma/bin/karma start karma.conf.js"
   },
   "author": "Antonio Noca - @antonionoca",
   "license": "ISC",
   "devDependencies": {
+    "brfs": "^1.4.3",
     "browserify": "^13.1.0",
     "budo": "^4.0.0",
     "dat-gui": "^0.5.0",

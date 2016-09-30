@@ -66,23 +66,28 @@ Line.prototype.generatedPoints = function(array) {
     invertedPerlin = invertedPerlin.reverse();
     noise = noise.concat(invertedPerlin);
 
-    var spline = [];
-
-    //TODO why reset i?
-    i = 0;
-
+    //TODO get rid of this local variable
     var ratio = this.size.x / noise.length;
 
-    //TODO move this block to a more meaningful function
-    while(i < noise.length) {
-        //TODO ugly push
-        spline.push(new THREE.Vector3( -this.size.x/2 + (ratio * i), noise[i], 0 ) );
-
-        i++;
-    }
+    var spline = this.createSplines(noise, this.size, ratio);
 
     var curve = new THREE.SplineCurve3(spline);
     return curve.getPoints(511);
+};
+
+//TODO add documentation
+Line.prototype.createSplines = function(noise, size, ratio) {
+  var spline = [];
+  var i = 0;
+
+  while(i < noise.length) {
+    //TODO ugly push
+    spline.push(new THREE.Vector3( -size.x/2 + (ratio * i), noise[i], 0 ) );
+
+    i++;
+  }
+
+  return spline;
 };
 
 module.exports = Line;

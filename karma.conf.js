@@ -17,12 +17,23 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'release.js',
       'test/*.test.js'
     ],
 
+    browserify: {
+      debug: true,
+      transform: [ 'brfs' ],
+      configure: function(bundle) {
+        bundle.on('prebundle', function() {
+            
+        });
+      }
+    },
 
     // list of files to exclude
     exclude: [
+      
     ],
 
 
