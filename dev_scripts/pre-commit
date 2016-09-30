@@ -1,0 +1,16 @@
+#!/bin/bash
+#
+# cp dev_scripts/pre-commit .git/hooks/pre-commit
+# chmod +x .git/hooks/pre-commit
+
+node_modules/jshint/bin/jshint **.js
+
+EXIT_CODE=$?
+if [ ${EXIT_CODE} -ne 0 ]; then
+    echo "[ERROR] code = " ${EXIT_CODE}
+    echo "JSHint detected syntax problems."
+    echo "Commit aborted."
+    exit 1
+else
+    echo "JSHint completed successfully\n"
+fi

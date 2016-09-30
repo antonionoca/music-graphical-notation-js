@@ -8,9 +8,7 @@ web audio API and unit testing in JavaScript.
 
 #TODO
 
-- jshint
-- tests
-- refactor code (classes)
+IN PROGRESS - refactor code (classes)
 - pure functions
 - why 22 lines/channels
 - why perlin noise

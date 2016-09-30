@@ -1,0 +1,13 @@
+{
+    "globals": {
+        "Audio": false,
+        "document": false,
+        "localStorage": false,
+        "module": false,
+        "require": false,
+        "requestAnimationFrame": false,
+        "window": false
+    },
+    "strict": "global",
+    "sub": true
+}
