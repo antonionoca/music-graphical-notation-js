@@ -66,13 +66,14 @@ Line.prototype.generatedPoints = function(array) {
     invertedPerlin = invertedPerlin.reverse();
     noise = noise.concat(invertedPerlin);
 
-    //TODO get rid of this local variable
-    var ratio = this.size.x / noise.length;
-
-    var spline = this.createSplines(noise, this.size, ratio);
+    var spline = this.createSplines(noise, this.size, this.getRatio(this.size.x, noise.length));
 
     var curve = new THREE.SplineCurve3(spline);
     return curve.getPoints(511);
+};
+
+Line.prototype.getRatio = function(x, noiseLength) {
+  return !noiseLength ? null : x / noiseLength;
 };
 
 //TODO add documentation
