@@ -10,5 +10,7 @@ web audio API and unit testing in JavaScript.
 
 IN PROGRESS - refactor code (classes)
 - pure functions
+- create new modules
 - why 22 lines/channels
 - why perlin noise
+- profiling
