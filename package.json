@@ -2,13 +2,13 @@
   "name": "music-graphical-notation",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "app/index.js",
   "scripts": {
-    "build": "browserify main.js > release.js",
-    "lint": "node_modules/jshint/bin/jshint **.js",
+    "build": "browserify app/main.js > release.js",
+    "lint": "jshint **.js",
     "preinstall": "cp dev_scripts/pre-commit .git/hooks/pre-commit;chmod +x .git/hooks/pre-commit",
-    "start": "budo main.js:release.js -v --live | garnish",
-    "test": "browserify main.js | $PWD/node_modules/karma/bin/karma start karma.conf.js"
+    "start": "budo app/main.js:release.js -v --live | garnish",
+    "test": "browserify app/main.js | karma start karma.conf.js"
   },
   "author": "Antonio Noca - @antonionoca",
   "license": "ISC",

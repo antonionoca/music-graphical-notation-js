@@ -3,9 +3,9 @@
 var THREE    = require('three');
 var TweenMax = require('gsap');
 var perlin   = require('perlin-noise');
+var Range    = require('./range');
 
-var Line = function(y, amp, index, size, startCounter, fftData)
-{
+var Line = function(y, amp, index, size, startCounter, fftData) {
     this.size              = size;
     this.amp               = amp;
     this.index             = index;
@@ -42,7 +42,7 @@ Line.prototype.generatedPoints = function(array) {
     if(!array) return;
 
     var i;
-    var range = this.createRange();
+    var range = new Range().getRange();
     var start = range * (this.createOrder(this.index) % 11);
     var noise = this.initializeNoise(perlin, range, start, array);
 
@@ -57,13 +57,6 @@ Line.prototype.generatedPoints = function(array) {
 
     //TODO magic number
     return curve.getPoints(511);
-};
-
-//TODO understand magic numbers
-//TODO refactor magic numbers
-//TODO export it to a new module
-Line.prototype.createRange = function() {
-    return 512 / 8;
 };
 
 //TODO add tests

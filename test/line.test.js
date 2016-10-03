@@ -1,5 +1,5 @@
 var assert = require('assert');
-var Line = require('../line.js');
+var Line = require('../app/line.js');
 
 var line;
 
