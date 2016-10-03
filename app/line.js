@@ -42,7 +42,7 @@ Line.prototype.generatedPoints = function(array) {
     if(!array) return;
 
     var i;
-    var range = Range.getRange();
+    var range = new Range().getRange();
     var start = range * (this.createOrder(this.index) % 11);
     var noise = this.initializeNoise(perlin, range, start, array);
 
