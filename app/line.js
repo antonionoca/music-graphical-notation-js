@@ -5,6 +5,7 @@ var TweenMax = require('gsap');
 var perlin   = require('perlin-noise');
 var Range    = require('./range');
 var StraightLine = require('./straight_line');
+var Order    = require('./order');
 
 var Line = function(y, amp, index, size, startCounter, fftData) {
 	this.size              = size;
@@ -44,7 +45,7 @@ Line.prototype.generatedPoints = function(array) {
 
 	var i;
 	var range = new Range().getRange();
-	var start = range * (this.createOrder(this.index) % 11);
+	var start = range * (new Order().createOrder(this.index) % 11);
 	var noise = this.initializeNoise(perlin, range, start, array);
 
 	var invertedPerlin = noise.slice(0);
@@ -63,14 +64,6 @@ Line.prototype.generatedPoints = function(array) {
 //TODO add tests
 Line.prototype.initializeNoise = function(_perlin, range, start, array) {
 	return new StraightLine().createStraightLines(_perlin).concat(this.createNoises(range, start, array));
-};
-
-//TODO document this pure function
-//TODO understand parameters
-//TODO add tests
-//TODO export it to another module
-Line.prototype.createOrder = function(index) {
-	return index < 11 ? 10 - index : index;
 };
 
 //TODO add documentation
