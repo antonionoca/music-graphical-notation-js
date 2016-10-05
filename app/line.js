@@ -4,13 +4,14 @@ var THREE    = require('three');
 var TweenMax = require('gsap');
 var perlin   = require('perlin-noise');
 var Range    = require('./range');
-var StraightLine = require('./straight_line');
 var Order    = require('./order');
+var Noise    = require('./noise');
 
 var Line = function(y, amp, index, size, startCounter, fftData) {
 	this.size              = size;
 	this.amp               = amp;
 	this.index             = index;
+	this.noise             = new Noise();
 	this.points            = this.generatedPoints(fftData);
 	
 	this.geometry          = new THREE.Geometry();
@@ -46,7 +47,7 @@ Line.prototype.generatedPoints = function(array) {
 	var i;
 	var range = new Range().getRange();
 	var start = range * (new Order().createOrder(this.index) % 11);
-	var noise = this.initializeNoise(perlin, range, start, array);
+	var noise = this.noise.initializeNoise(perlin, range, start, array);
 
 	var invertedPerlin = noise.slice(0);
 	invertedPerlin = invertedPerlin.reverse();
@@ -59,35 +60,6 @@ Line.prototype.generatedPoints = function(array) {
 
 	//TODO magic number
 	return curve.getPoints(511);
-};
-
-//TODO add tests
-Line.prototype.initializeNoise = function(_perlin, range, start, array) {
-	return new StraightLine().createStraightLines(_perlin).concat(this.createNoises(range, start, array));
-};
-
-//TODO add documentation
-//TODO add tests
-Line.prototype.createNoises = function(range, start, array) {
-	var noise = [];
-	var i = 0;
-
-	for (i = range + start; i >= start; i--) {
-			noise.push(this.createNoise(i, array));
-	}
-
-	return noise;
-};
-
-//TODO understand parameters
-//TODO add tests
-//TODO export it to another module
-Line.prototype.createNoise = function(i, array) {
-	var noise = array[i] / 5;
-	noise = noise > 20 ? noise * 1.5 : noise / 50; 
-	noise = Math.max(5, noise);
-
-	return noise;
 };
 
 //TODO export it to another module
