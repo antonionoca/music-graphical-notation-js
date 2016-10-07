@@ -8,6 +8,7 @@ describe('range.js module', function() {
   });
 
   it('should calculate a fixed range', function() {
-    expect(64).toEqual(64, range.getRange());
+    expect(64).toEqual(range.getRange());
+    expect(65).not.toEqual(range.getRange());
   });
 });
