@@ -47,7 +47,7 @@ Line.prototype.generatedPoints = function(array) {
 
 	var i;
 	var range = new Range().getRange();
-	var start = range * (new Order().createOrder(this.index) % 11);
+	var start = range * (Order.createOrder(this.index) % 11);
 	var noise = this.noise.initializeNoise(perlin, range, start, array);
 
 	var invertedPerlin = noise.slice(0);
