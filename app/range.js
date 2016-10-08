@@ -5,7 +5,7 @@ var Range = function() {
 
 //TODO understand magic numbers
 //TODO refactor magic numbers
-Range.prototype.getRange = function() {
+Range.getRange = function() {
     return 512 / 8;
 };
 
