@@ -3,9 +3,10 @@
 var THREE    = require('three');
 var TweenMax = require('gsap');
 var perlin   = require('perlin-noise');
-var Range    = require('./range');
-var Order    = require('./order');
 var Noise    = require('./noise');
+var Order    = require('./order');
+var Range    = require('./range');
+var Ratio    = require('./ratio');
 
 var Line = function(y, amp, index, size, startCounter, fftData) {
 	this.size              = size;
@@ -54,17 +55,12 @@ Line.prototype.generatedPoints = function(array) {
 
 	noise = noise.concat(invertedPerlin);
 
-	var spline = this.createSplines(noise, this.size, this.getRatio(this.size.x, noise.length));
+	var spline = this.createSplines(noise, this.size, Ratio.getRatio(this.size.x, noise.length));
 
 	var curve = new THREE.SplineCurve3(spline);
 
 	//TODO magic number
 	return curve.getPoints(511);
-};
-
-//TODO export it to another module
-Line.prototype.getRatio = function(x, noiseLength) {
-	return !noiseLength ? null : x / noiseLength;
 };
 
 //TODO add documentation

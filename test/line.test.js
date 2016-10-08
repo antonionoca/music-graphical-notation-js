@@ -54,26 +54,5 @@ describe('SpLine using Perlin Noise', function() {
     it('should return randomnized line when argument is the same', function() {
       expect(line.generatedPoints([0])).not.toBe(line.generatedPoints([0]));
     });
-
   });
-
-  describe('getRatio function', function() {
-  
-    it('should return null when no argument is passed', function() {
-      assert.equal(null, line.getRatio());
-    });
-
-    it('should not try to divide by zero', function() {
-      assert.equal(null, line.getRatio(0,0));
-    });
-
-    it('should apply a simple division', function() {
-      assert.equal(2, line.getRatio(2,1));
-      assert.equal(1, line.getRatio(2,2));
-      assert.equal(2, line.getRatio(4,2));
-      assert.equal(2.5, line.getRatio(5,2));
-    });
-
-  });
-
 });
