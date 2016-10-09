@@ -3,10 +3,16 @@
 var Range = function() {
 };
 
-//TODO understand magic numbers
-//TODO refactor magic numbers
+Range.get = function(name) {
+	var constants = {
+		'ratio': 64
+	};
+
+	return constants[name];
+};
+
 Range.getRange = function() {
-    return 512 / 8;
+	return Range.get('ratio');
 };
 
 module.exports = Range;
