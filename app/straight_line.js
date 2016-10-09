@@ -3,18 +3,27 @@
 var StraightLine = function() {
 };
 
-//TODO document
-//TODO add tests
-StraightLine.prototype.createStraightLines = function(_perlin) {
-  //TODO fix magic numbers
-  var straightLines = _perlin.generatePerlinNoise(1, 128);
-  var i = 0;
+StraightLine.get = function(name) {
+	var constants = {
+		'HEIGHT'     : 1,
+		'WIDTH'     : 128,
+		'MULTIPLIER' : 10
+	};
 
-  for (i = straightLines.length - 1; i >= 0; i--) {
-      straightLines[i] *= 10;
-  }
-  
-  return straightLines;
+	return constants[name];
+};
+
+StraightLine.prototype.createStraightLines = function(_perlin) {
+	var i = 0;
+	var straightLines = _perlin.generatePerlinNoise(
+		StraightLine.get('HEIGHT'), 
+		StraightLine.get('WIDTH'));
+
+	for (i = straightLines.length - 1; i >= 0; i--) {
+		straightLines[i] *= StraightLine.get('MULTIPLIER');
+	}
+
+	return straightLines;
 };
 
 module.exports = StraightLine;
