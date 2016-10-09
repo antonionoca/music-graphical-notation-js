@@ -3,7 +3,7 @@ var Range = require('../app/range.js');
 describe('range.js module', function() {
 
     it('should initialize the constants', function() {
-        expect(Range.get('ratio')).toEqual(64);
+        expect(Range.get('RATIO')).toEqual(64);
     });
 
     it('should calculate a fixed range', function() {

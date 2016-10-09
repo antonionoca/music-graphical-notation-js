@@ -3,13 +3,25 @@
 var Order = function() {
 };
 
-//TODO refactor magic numbers
-//TODO document
-//TODO add tests
-Order.createOrder = function(index) {
-  if (typeof index === 'undefined' || index === null) return undefined;
+Order.get = function(name) {
+	var constants = {
+		'THRESHOLD': 11,
+		'INVERTER':  10
+	};
 
-	return index < 11 ? 10 - index : index;
+	return constants[name];
+};
+
+Order.createOrder = function(index) {
+	if (typeof index === 'undefined' || index === null) {
+		return undefined;
+	}
+
+	if (index < Order.get('THRESHOLD')) {
+		return Order.get('INVERTER') - index;
+	}
+	
+	return index;
 };
 
 module.exports = Order;
