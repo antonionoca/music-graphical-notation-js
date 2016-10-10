@@ -6,6 +6,10 @@ Graphical representation of an mp3 song using Perlin noise and Three.js
 The main goal of this project is to learn about music visualization,
 web audio API and unit testing in JavaScript.   
 
+# Project Status
+
+[![Build Status](https://travis-ci.org/antonionoca/music-graphical-notation-js.svg?branch=master)](https://travis-ci.org/antonionoca/music-graphical-notation-js)
+
 ## Prerequisites
 
 - NodeJS
@@ -44,7 +48,6 @@ npm test
 
 #TODO
 
-- continuous integration
 - pure functions
 - why 22 lines/channels
 - profiling
@@ -52,7 +55,7 @@ npm test
 # Author
 
 Antonio Noca
-@antonionoca
+[@antonionoca](http://twitter.com/antonionoca)
 
 # License
 
