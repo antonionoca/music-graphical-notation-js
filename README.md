@@ -44,11 +44,9 @@ npm test
 
 #TODO
 
-IN PROGRESS - refactor code (classes)
+- continuous integration
 - pure functions
-- create new modules
 - why 22 lines/channels
-- why perlin noise
 - profiling
 
 # Author
