@@ -6,13 +6,21 @@ var Noise = function() {
     this.straightLine = new StraightLine();
 };
 
-//TODO add tests
+Noise.get = function(name) {
+	var constants = {
+		'DIVIDER': 5,
+		'THRESHOLD': 20,
+		'MULTIPLIER': 1.5,
+		'NOISE_DIVIDER': 50
+	};
+
+	return constants[name];
+};
+
 Noise.prototype.initializeNoise = function(_perlin, range, start, array) {
 	return this.straightLine.createStraightLines(_perlin).concat(this.createNoises(range, start, array));
 };
 
-//TODO add documentation
-//TODO add tests
 Noise.prototype.createNoises = function(range, start, array) {
 	var noise = [];
 	var i = 0;
@@ -24,12 +32,11 @@ Noise.prototype.createNoises = function(range, start, array) {
 	return noise;
 };
 
-//TODO documentation
 //TODO is index out of bounds a bug? or shall we return 5?
 Noise.prototype.createNoise = function(i, array) {
-    var noise = array[i] / 5;
-    noise = noise > 20 ? noise * 1.5 : noise / 50; 
-    noise = Math.max(5, noise);
+    var noise = array[i] / Noise.get('DIVIDER');
+    noise = noise > Noise.get('THRESHOLD') ? noise * Noise.get('MULTIPLIER') : noise / Noise.get('NOISE_DIVIDER'); 
+    noise = Math.max(Noise.get('DIVIDER'), noise);
 
     return noise;
 };

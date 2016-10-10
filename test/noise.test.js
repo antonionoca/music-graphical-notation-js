@@ -9,6 +9,13 @@ describe('Noise class', function() {
         noise = new Noise();
     });
 
+	it('should initialize the constants', function() {
+		expect(Noise.get('DIVIDER')).toEqual(5);
+		expect(Noise.get('THRESHOLD')).toEqual(20);
+		expect(Noise.get('MULTIPLIER')).toEqual(1.5);
+		expect(Noise.get('NOISE_DIVIDER')).toEqual(50);
+	});
+
     describe('initializeNoise function', function() {
         it('should initialize noise object without NaN', function() {
             expect(noise.initializeNoise(perlin, 0, 0, [])).not.toContain([NaN]);
