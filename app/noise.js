@@ -9,9 +9,9 @@ var Noise = function() {
 Noise.get = function(name) {
 	var constants = {
 		'DIVIDER': 5,
-		'THRESHOLD': 20,
 		'MULTIPLIER': 1.5,
-		'NOISE_DIVIDER': 50
+		'NOISE_DIVIDER': 50,
+		'THRESHOLD': 20
 	};
 
 	return constants[name];

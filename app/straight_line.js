@@ -6,8 +6,8 @@ var StraightLine = function() {
 StraightLine.get = function(name) {
 	var constants = {
 		'HEIGHT'     : 1,
-		'WIDTH'     : 128,
-		'MULTIPLIER' : 10
+		'MULTIPLIER' : 10,
+		'WIDTH'      : 128
 	};
 
 	return constants[name];
