@@ -17,7 +17,6 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'release.js',
       'test/*.test.js'
     ],
 
@@ -40,14 +39,20 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-			'test/**/*.js': [ 'browserify' ]
+		'test/**/*.js': [ 'browserify' ],
+		'app/*.js': 'coverage'
     },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage'],
+
+	coverageReporter: {	
+		type: 'html',
+		dir: 'coverage'
+	},
 
 
     // web server port
