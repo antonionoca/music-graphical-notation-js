@@ -12,16 +12,15 @@ var animation = new Animation(THREE);
 //--
 //TODO playback code
 //TODO Audio is a potential jshint global issue
-var audio = new Audio('mp3/lazerhawk.mp3');
-audio.addEventListener('canplaythrough', init.bind(window));
+playback.audio.addEventListener('canplaythrough', init.bind(window));
 
 function init()
 {
-    audio.play();
+    playback.audio.play();
     update();
 }
 
-var audioAnalyser = require('web-audio-analyser')(audio);
+var audioAnalyser = require('web-audio-analyser')(playback.audio);
 audioAnalyser.analyser.fftSize = 2048;
 //--
 
