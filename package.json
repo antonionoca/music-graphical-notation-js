@@ -8,8 +8,8 @@
     "lint": "jshint **.js",
     "preinstall": "cp dev_scripts/pre-commit .git/hooks/pre-commit;chmod +x .git/hooks/pre-commit",
     "start": "budo app/main.js:release.js -v --live | garnish",
-    "test": "browserify app/main.js | karma start karma.conf.js",
-    "test:debug": "browserify app/main.js | karma start karma.debug.conf.js"
+    "test": "karma start karma.conf.js",
+    "test:debug": "karma start karma.debug.conf.js"
   },
   "author": "Antonio Noca - @antonionoca",
   "license": "ISC",
