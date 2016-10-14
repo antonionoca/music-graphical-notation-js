@@ -9,9 +9,6 @@ var playback = new Playback();
 var Animation = require('./animation');
 var animation = new Animation(THREE);
 
-//--
-//TODO playback code
-//TODO Audio is a potential jshint global issue
 playback.audio.addEventListener('canplaythrough', init.bind(window));
 
 function init()
@@ -20,9 +17,7 @@ function init()
     update();
 }
 
-var audioAnalyser = require('web-audio-analyser')(playback.audio);
-audioAnalyser.analyser.fftSize = 2048;
-//--
+playback.audioAnalyser.analyser.fftSize = 2048;
 
 //TODO animation code
 var counter = 0;
@@ -32,7 +27,7 @@ document.body.appendChild(animation.renderer.domElement);
 //TODO too many loose iterators and calculators
 //TODO animation code
 var lines = new Array(22);
-animation.initializeLines(lines, audioAnalyser);
+animation.initializeLines(lines, playback.audioAnalyser);
 
 //TODO window
 onResize();
@@ -44,7 +39,7 @@ update();
 function update()
 {
     for (var i = lines.length - 1; i >= 0; i--) {
-        lines[i].update( audioAnalyser.frequencies() );
+        lines[i].update( playback.audioAnalyser.frequencies() );
     }
     animation.renderer.render(animation.scene, animation.camera);
 
