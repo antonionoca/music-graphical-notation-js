@@ -1,6 +1,5 @@
 'use strict';
 
-//TODO this code is full of magic numbers
 var THREE = require('three');
 
 var Playback = require('./playback');
@@ -18,9 +17,6 @@ function init()
 }
 
 playback.audioAnalyser.analyser.fftSize = 2048;
-
-//TODO animation code
-var counter = 0;
 
 document.body.appendChild(animation.renderer.domElement);
 
