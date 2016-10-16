@@ -16,8 +16,6 @@ function init()
     update();
 }
 
-playback.audioAnalyser.analyser.fftSize = 2048;
-
 document.body.appendChild(animation.renderer.domElement);
 
 //TODO too many loose iterators and calculators
