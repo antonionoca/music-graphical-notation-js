@@ -28,6 +28,7 @@
     "karma-coverage": "^1.1.1",
     "karma-jasmine": "^1.0.2",
     "karma-phantomjs-launcher": "^1.0.2",
+    "karma-threshold-reporter": "^0.1.15",
     "perlin-noise": "0.0.1",
     "three": "^0.71.0",
     "three-orbit-controls": "^69.0.4",
