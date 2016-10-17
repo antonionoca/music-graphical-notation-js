@@ -12,11 +12,11 @@ var Animation = function(THREE) {
 
 	this.scene = new THREE.Scene();
 	this.SIZE = {x: window.innerWidth / 2, y: 30};
+	this.lines = new Array(22);
 };
 
 Animation.prototype.initializeLines = function(lines, audioAnalyser) {
 	for (var i = lines.length - 1; i >= 0; i--) {
-		//TODO ugly object instantiation
 		lines[i] = new line(-this.SIZE.y/2 + i, 50, i, this.SIZE, Math.random() * i >> 0, audioAnalyser.frequencies());
 		this.scene.add(lines[i].mesh);
 	}
