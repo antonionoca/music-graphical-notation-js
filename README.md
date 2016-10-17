@@ -48,9 +48,8 @@ npm test
 
 #TODO
 
-- pure functions
-- why 22 lines/channels
-- profiling
+I've added what I was looking for..
+Any suggestions?
 
 # Author
 
