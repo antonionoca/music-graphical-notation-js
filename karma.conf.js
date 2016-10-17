@@ -22,7 +22,7 @@ module.exports = function(config) {
 
     browserify: {
       debug: true,
-      transform: [ 'brfs' ],
+      transform: [ 'coverageify', 'brfs' ],
       configure: function(bundle) {
         bundle.on('prebundle', function() {
             
@@ -32,7 +32,6 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
-      
     ],
 
 
