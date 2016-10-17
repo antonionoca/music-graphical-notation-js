@@ -22,4 +22,20 @@ Animation.prototype.initializeLines = function(lines, audioAnalyser) {
 	}
 };
 
+Animation.prototype.render = function() {
+	this.renderer.render(this.scene, this.camera);
+};
+
+Animation.prototype.updateLines = function(audioAnalyser) {
+    for (var i = this.lines.length - 1; i >= 0; i--) {
+        this.lines[i].update( audioAnalyser.frequencies() );
+    }
+};
+
+Animation.prototype.onResize = function(win) {
+    this.renderer.setSize(win.innerWidth, win.innerHeight);
+    this.camera.aspect = win.innerWidth / win.innerHeight;
+    this.camera.updateProjectionMatrix();
+};
+
 module.exports = Animation;

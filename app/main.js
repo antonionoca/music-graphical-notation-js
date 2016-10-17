@@ -8,39 +8,40 @@ var playback = new Playback();
 var Animation = require('./animation');
 var animation = new Animation(THREE);
 
-playback.audio.addEventListener('canplaythrough', init.bind(window));
+var Main = function() { };
 
-function init()
+Main.onResize = function() {
+	animation.onResize(window);
+}
+
+Main.update = function() {
+	animation.updateLines(playback.audioAnalyser);
+	animation.render();
+
+    requestAnimationFrame(Main.update);
+}
+
+Main.init = function()
 {
     playback.audio.play();
-    update();
+    Main.update();
 }
 
-document.body.appendChild(animation.renderer.domElement);
+Main.initialize = function() {
 
-//TODO animation code
-animation.initializeLines(animation.lines, playback.audioAnalyser);
+	document.body.appendChild(animation.renderer.domElement);
 
-//TODO window
-onResize();
-window.onresize = onResize;
+	playback.audio.addEventListener('canplaythrough', Main.init.bind(window));
 
-//TODO animation and scene
-update();
+	animation.initializeLines(animation.lines, playback.audioAnalyser);
 
-function update()
-{
-    for (var i = animation.lines.length - 1; i >= 0; i--) {
-        animation.lines[i].update( playback.audioAnalyser.frequencies() );
-    }
-    animation.renderer.render(animation.scene, animation.camera);
+	Main.onResize();
+	window.onresize = Main.onResize;
 
-    //TODO jshint global issue. who owns this?
-    requestAnimationFrame(update);
-}
+	Main.update();
+};
 
-function onResize() {
-    animation.renderer.setSize(window.innerWidth, window.innerHeight);
-    animation.camera.aspect = window.innerWidth / window.innerHeight;
-    animation.camera.updateProjectionMatrix();
-}
+module.exports = Main;
+
+//application start
+Main.initialize();
