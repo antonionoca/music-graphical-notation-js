@@ -18,10 +18,8 @@ function init()
 
 document.body.appendChild(animation.renderer.domElement);
 
-//TODO too many loose iterators and calculators
 //TODO animation code
-var lines = new Array(22);
-animation.initializeLines(lines, playback.audioAnalyser);
+animation.initializeLines(animation.lines, playback.audioAnalyser);
 
 //TODO window
 onResize();
@@ -32,8 +30,8 @@ update();
 
 function update()
 {
-    for (var i = lines.length - 1; i >= 0; i--) {
-        lines[i].update( playback.audioAnalyser.frequencies() );
+    for (var i = animation.lines.length - 1; i >= 0; i--) {
+        animation.lines[i].update( playback.audioAnalyser.frequencies() );
     }
     animation.renderer.render(animation.scene, animation.camera);
 
