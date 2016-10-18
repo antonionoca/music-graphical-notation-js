@@ -3,3 +3,4 @@ mp3/*
 **/*.swp
 coverage/
 ref/
+app/index.js
