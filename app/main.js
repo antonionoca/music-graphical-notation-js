@@ -3,7 +3,7 @@
 var THREE = require('three');
 
 var Playback = require('./playback');
-var playback = new Playback();
+var playback = new Playback('mp3/lazerhawk.mp3');
 
 var Animation = require('./animation');
 var animation = new Animation(THREE);
