@@ -5,7 +5,7 @@ then
 	echo 'No argument supplied, defaulting to mp3/default.mp3'
 fi
 
-FILE=${2-'mp3/lazerhawk.mp3'}
+FILE=${2-'mp3/default.mp3'}
 FILE=$(echo $FILE | sed -e 's/\//\\\//g')
 FILE="$FILE"
 
