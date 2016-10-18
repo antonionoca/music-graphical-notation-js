@@ -2,7 +2,6 @@
 
 Graphical representation of an mp3 song using Perlin noise and Three.js
 
-
 The main goal of this project is to learn about music visualization,
 web audio API and unit testing in JavaScript.   
 
@@ -14,7 +13,6 @@ web audio API and unit testing in JavaScript.
 
 - NodeJS
 - NPM
-- Place your mp3 file on the mp3 folder and rename it on main.js:9
 
 ## Installing
 
@@ -25,7 +23,7 @@ npm install
 ## Getting Started
 
 ```
-npm start
+npm start <PATH_MP3_FILE>
 ```
 
 This will initialize the application on http://localhost:9966
