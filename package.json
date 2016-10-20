@@ -1,6 +1,6 @@
 {
   "name": "music-graphical-notation",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "",
   "main": "app/index.js",
   "scripts": {
