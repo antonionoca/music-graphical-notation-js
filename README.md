@@ -8,6 +8,7 @@ web audio API and unit testing in JavaScript.
 # Project Status
 
 [![Build Status](https://travis-ci.org/antonionoca/music-graphical-notation-js.svg?branch=master)](https://travis-ci.org/antonionoca/music-graphical-notation-js)
+[![Code Climate](https://codeclimate.com/github/antonionoca/music-graphical-notation-js/badges/gpa.svg)](https://codeclimate.com/github/antonionoca/music-graphical-notation-js)
 
 ## Prerequisites
 
