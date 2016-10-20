@@ -34,9 +34,9 @@ Just like those good old Winamp visualizations.
 
 ## Technologies
 
+- Browserify
 - KarmaJS
 - Three.js
-- Browserify
 - Web Audio API
 
 ## Running the tests
